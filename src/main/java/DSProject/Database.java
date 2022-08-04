@@ -136,7 +136,10 @@ public class Database {
         }
         return myUser;
     }
-
+    /**
+     * Uses CLI to converse with user in order to login
+     * @return the user which was logged in
+     */
     public User accessUsersAccount(Scanner myScanner) {
         System.out.println("Thank you for using our program!");
         Boolean hasAccount=checkIfUserHasAccountAlready(myScanner);
@@ -152,6 +155,10 @@ public class Database {
         }
         return u;
     }
+    /**
+     * Uses cli to check if the user already has an account in the system
+     * @return true if the user does, false if the user does not
+     */
     private boolean checkIfUserHasAccountAlready(Scanner myScanner) {
         Boolean haveAccount=null;
         while(haveAccount==null) {
@@ -448,6 +455,9 @@ public class Database {
         items.addAll(notes);
         return items;
     }
+    /**
+     * prints all od the items for sale to the console
+     */
     public void listAllItems()
     {
         for(Book b:this.booksForSale.values())
@@ -537,7 +547,9 @@ public class Database {
     public void addUser(User user){
         this.users.put(user.getUserName(), user);
     }
-
+    /**
+     * @return a HashMap of the books for sale
+     */
     public HashMap<Integer, Book> getBooksForSale(){
        HashMap<Integer,Book> copy=new HashMap<>();
         for(Integer i:this.booksForSale.keySet())
@@ -546,6 +558,9 @@ public class Database {
         }
         return copy;
     }
+    /**
+     * @return a HashMap of the notes for sale
+     */
     public HashMap<Integer, Notes> getNotesForSale(){
         HashMap<Integer,Notes> copy=new HashMap<>();
         for(Integer i:this.notesForSale.keySet())
@@ -554,10 +569,16 @@ public class Database {
         }
         return copy;
     }
+    /**
+     * @return a HashMap of the user mapped to a set of the items that user is selling
+     */
     public HashMap<String, Set<Integer>> getUserToItemsSelling(){
         return this.userToItemsSelling;
     }
-
+    
+    /**
+     * @return a HashMap of the users
+     */
     public HashMap<String, User> getUsers(){
         HashMap<String,User> copy=new HashMap<>();
         for(String s:this.users.keySet())
@@ -566,7 +587,9 @@ public class Database {
         }
         return copy;
     }
-
+    /**
+     * @return the last used product ID
+     */
     public Integer getLastUsedProductID(){
         Integer i=this.lastUsedProductID;
         return i;
