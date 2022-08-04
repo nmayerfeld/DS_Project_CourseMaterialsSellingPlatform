@@ -119,7 +119,10 @@ public class User {
         }
         return total/this.ratings.size();
     }
-
+    
+    /**
+     * @param rating
+     */
     public void addRating(Double rating){
         this.ratings.add(rating);
     }
