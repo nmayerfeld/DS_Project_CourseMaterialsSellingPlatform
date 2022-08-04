@@ -30,6 +30,11 @@ public class SystemManager {
         runProgram(d,u,myScanner);
         closeProgram(d);
     }
+    /**
+     * intializes the database from the serialized JSON after the last use, or a new one if this is the first time the program is used
+     * @return the Database object
+     * @throws IOException, ClassNotFoundException
+     */
     public static Database initializeDatabase() throws IOException, ClassNotFoundException {
         Database d;
         try {
@@ -54,6 +59,12 @@ public class SystemManager {
             return d;
         }
     }
+    /**
+     * @param d
+     * @param u
+     * @param myScanner
+     * runs the program
+     */
     public static void runProgram(Database d,User u,Scanner myScanner) {
         while(true) {
             System.out.println("Would you like to continue to use the program?  Enter \"yes\" to continue, or \"exit\" to log out.");
@@ -69,6 +80,9 @@ public class SystemManager {
             }
         }
     }
+    /**
+     * closes the program and serializes the information within as a JSON
+     */
     public static void closeProgram(Database d) {
         try {
             FileOutputStream fileOut = new FileOutputStream("Database.json");
